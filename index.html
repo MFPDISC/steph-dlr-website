@@ -163,6 +163,26 @@
   }
 
   .hero-content { position: relative; z-index: 2; max-width: 680px; }
+  
+  .steph-photo {
+    position: fixed;
+    bottom: -200px;
+    right: 48px;
+    width: 120px;
+    height: 120px;
+    background: url('Photos/steph-photo.jpg') center/cover no-repeat;
+    border-radius: 50%;
+    border: 2px solid var(--red);
+    z-index: 10;
+    opacity: 0;
+    transition: all 0.6s ease;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  
+  .steph-photo.visible {
+    bottom: 48px;
+    opacity: 1;
+  }
 
   .hero-eyebrow {
     font-family: 'DM Mono', monospace;
@@ -705,6 +725,7 @@
       <div class="stat-label">Disciplines</div>
     </div>
   </div>
+  <div class="steph-photo" id="stephPhoto"></div>
 </section>
 
 <!-- ABOUT -->
@@ -897,6 +918,22 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Steph photo scroll reveal
+const stephPhoto = document.getElementById('stephPhoto');
+let hasShownPhoto = false;
+
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.scrollY;
+  
+  if (scrollPosition > 200 && !hasShownPhoto) {
+    stephPhoto.classList.add('visible');
+    hasShownPhoto = true;
+  } else if (scrollPosition <= 200 && hasShownPhoto) {
+    stephPhoto.classList.remove('visible');
+    hasShownPhoto = false;
+  }
+});
 </script>
 </body>
 </html>
