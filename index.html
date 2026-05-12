@@ -518,14 +518,19 @@
     position: absolute;
     top: 0;
     left: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
   }
   .product-img-gallery img {
-    width: 50%;
     height: 100%;
     object-fit: cover;
     border: none;
+    scroll-snap-align: center;
+    flex-shrink: 0;
   }
-  .product-img-gallery img:first-child {
+  .product-img-gallery img:not(:last-child) {
     border-right: 1px solid var(--border);
   }
 
