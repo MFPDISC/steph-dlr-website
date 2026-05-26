@@ -164,7 +164,8 @@
   #hero {
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
     padding: 140px 48px 80px;
     position: relative;
     overflow: hidden;
@@ -173,25 +174,57 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(10,10,10,0.9) 30%, rgba(10,10,10,0.5) 70%), url('Photos/C19D5079-7360-48C3-8BCC-9FA7C6151567_1_105_c.jpeg') center/cover no-repeat;
-    z-index: 1;
+    background: url('Photos/C19D5079-7360-48C3-8BCC-9FA7C6151567_1_105_c.jpeg') center/cover no-repeat;
   }
-  
-  .hero-grid {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 48px;
-    width: 100%;
-    align-items: center;
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(26,10,8,0.7) 0%, rgba(10,10,10,0.8) 50%, rgba(10,10,10,0.9) 100%);
   }
 
-  .hero-content { max-width: 720px; }
+  .hero-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(200,56,42,0.06) 100%);
+  }
+
+  .hero-line {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 52%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--red) 30%, var(--red) 70%, transparent);
+    opacity: 0.15;
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 680px; }
   
+  .steph-photo {
+    position: fixed;
+    bottom: -200px;
+    right: 48px;
+    width: 120px;
+    height: 120px;
+    background: url('Photos/steph-photo.jpg') center/cover no-repeat;
+    border-radius: 50%;
+    border: 2px solid var(--red);
+    z-index: 10;
+    opacity: 0;
+    transition: all 0.6s ease;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  
+  .steph-photo.visible {
+    bottom: 48px;
+    opacity: 1;
+  }
+
   .hero-eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--red);
@@ -209,39 +242,31 @@
 
   .hero-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(54px, 8vw, 100px);
+    font-size: clamp(64px, 10vw, 120px);
     line-height: 0.95;
-    letter-spacing: 1px;
-    margin-bottom: 24px;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
     color: var(--white);
   }
   .hero-title .accent { color: var(--red); }
-  .hero-title .preorder-stamp {
-    font-size: 20px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    color: var(--gold);
-    display: block;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-  }
 
   .hero-sub {
-    font-size: 18px;
-    color: #c4c1bc;
-    line-height: 1.6;
-    margin-bottom: 36px;
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 44px;
     font-weight: 300;
   }
 
-  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
 
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 16px 32px;
+    gap: 8px;
+    padding: 14px 28px;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -249,20 +274,19 @@
     text-decoration: none;
     border-radius: 2px;
     cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid transparent;
   }
   .btn-primary {
     background: var(--red);
     color: var(--white);
     border-color: var(--red);
-    box-shadow: 0 4px 20px var(--glow);
+    box-shadow: 0 4px 12px var(--glow);
   }
   .btn-primary:hover { 
     background: var(--red-dark); 
     border-color: var(--red-dark);
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(200, 56, 42, 0.3);
   }
   .btn-ghost {
     background: transparent;
@@ -270,84 +294,38 @@
     border-color: rgba(245,242,237,0.2);
   }
   .btn-ghost:hover { 
-    border-color: rgba(245,242,237,0.6);
-    background: rgba(255,255,255,0.03);
+    border-color: rgba(245,242,237,0.5);
     transform: translateY(-2px);
+    background: rgba(255,255,255,0.03);
   }
 
-  .hero-stats-row {
+  .hero-stats {
+    position: absolute;
+    right: 48px;
+    bottom: 80px;
     display: flex;
-    gap: 40px;
+    flex-direction: column;
+    gap: 28px;
+    z-index: 2;
   }
-  .stat { text-align: left; }
+  .stat { text-align: right; }
   .stat-number {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 40px;
-    letter-spacing: 1px;
+    font-size: 42px;
+    letter-spacing: 2px;
     color: var(--white);
     line-height: 1;
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
   }
-  .stat-number span { font-size: 18px; color: var(--gold); }
   .stat-label {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--muted);
-    margin-top: 4px;
+    margin-top: 2px;
   }
 
-  .hero-showcase {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .hero-showcase-frame {
-    width: 100%;
-    max-width: 420px;
-    aspect-ratio: 1;
-    border-radius: 4px;
-    border: 1px solid var(--border);
-    background: linear-gradient(135deg, #161615 0%, #0d0d0c 100%);
-    padding: 16px;
-    position: relative;
-    box-shadow: 0 32px 64px rgba(0,0,0,0.5);
-    overflow: hidden;
-  }
-  .hero-showcase-frame::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top left, rgba(200, 56, 42, 0.08) 0%, transparent 60%);
-  }
 
-  .hero-showcase-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 2px;
-    border: 1px solid rgba(255,255,255,0.02);
-  }
-
-  .hero-showcase-badge {
-    position: absolute;
-    bottom: 32px;
-    right: -10px;
-    background: var(--gold);
-    color: var(--black);
-    font-weight: 700;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 8px 16px;
-    border-radius: 2px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  }
 
   /* ── SECTION COMMON ── */
   section { padding: 120px 48px; position: relative; }
@@ -1226,7 +1204,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#hero" class="nav-logo">STEPH<span>.</span>DLR <span class="nav-logo-badge">Pre-Order</span></a>
+  <a href="#hero" class="nav-logo">STEPH<span>.</span>DLR</a>
   <ul class="nav-links">
     <li><a href="#bio">Why Flow Rope?</a></li>
     <li><a href="#tutorial">How To Flow</a></li>
@@ -1248,41 +1226,32 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-grid">
-    <div class="hero-content">
-      <p class="hero-eyebrow">Professional Fighter Conditioning</p>
-      <h1 class="hero-title">
-        <span class="preorder-stamp">Exclusive Pre-Order Campaign</span>
-        STEPH DLR PRESENTS:<br><span class="accent">THE FLOW ROPE</span>
-      </h1>
-      <p class="hero-sub">Unlock fluid shoulder mobility, fighter-level rhythm, and outstanding cardio conditioning. Designed for high performance, engineered for combat athletes. Est. release in 14 days.</p>
-      <div class="hero-actions">
-        <a href="javascript:void(0)" onclick="openModal()" class="btn btn-primary">Pre-Order Now — R299</a>
-        <a href="#tutorial" class="btn btn-ghost">Watch How To Flow</a>
-      </div>
-      <div class="hero-stats-row">
-        <div class="stat">
-          <div class="stat-number">R299<span>.00</span></div>
-          <div class="stat-label">Excl. Delivery</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">14<span>Days</span></div>
-          <div class="stat-label">Est. Release</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">450<span>g</span></div>
-          <div class="stat-label">High-Momentum</div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="hero-showcase">
-      <div class="hero-showcase-frame">
-        <img class="hero-showcase-img" src="Photos/flow-ropes-1.jpg" alt="Steph DLR Flow Rope">
-        <div class="hero-showcase-badge">Premium Quality</div>
-      </div>
+  <div class="hero-accent"></div>
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">MMA Coach &amp; Fighter</p>
+    <h1 class="hero-title">STEPH<br><span class="accent">DLR</span></h1>
+    <p class="hero-sub">Building complete fighters through discipline, technique, and mindset. Train with one of the sharpest coaches in the game.</p>
+    <div class="hero-actions">
+      <a href="javascript:void(0)" onclick="openModal()" class="btn btn-primary">Pre-Order Flow Rope — R299</a>
+      <a href="#tutorial" class="btn btn-ghost">Watch How To Flow</a>
     </div>
   </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-number">10+</div>
+      <div class="stat-label">Years Coaching</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">500+</div>
+      <div class="stat-label">Athletes Trained</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Disciplines</div>
+    </div>
+  </div>
+  <div class="steph-photo" id="stephPhoto"></div>
 </section>
 
 <!-- BIO SECTION -->
@@ -1811,6 +1780,22 @@ Your Flow Rope will be shipped immediately upon release in est. 14 days.
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+// Steph photo scroll reveal
+const stephPhoto = document.getElementById('stephPhoto');
+let hasShownPhoto = false;
+
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.scrollY;
+  
+  if (scrollPosition > 200 && !hasShownPhoto) {
+    if (stephPhoto) stephPhoto.classList.add('visible');
+    hasShownPhoto = true;
+  } else if (scrollPosition <= 200 && hasShownPhoto) {
+    if (stephPhoto) stephPhoto.classList.remove('visible');
+    hasShownPhoto = false;
+  }
+});
 </script>
 
 </body>
