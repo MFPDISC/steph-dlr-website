@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Steph DLR — MMA Coach</title>
+<title>Steph DLR — Premium Flow Rope Pre-Order</title>
+<meta name="description" content="Unlock peak coordination, shoulder mobility, and rhythm. Pre-order the professional-grade Steph DLR Flow Rope today. Est. release in 14 days.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -19,6 +20,9 @@
     --border: rgba(255,255,255,0.08);
     --card-bg: #111110;
     --whatsapp: #25D366;
+    --gold: #c5a880;
+    --gold-dark: #9e825a;
+    --glow: rgba(200, 56, 42, 0.15);
   }
 
   html { scroll-behavior: smooth; }
@@ -30,6 +34,21 @@
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--black);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--red);
   }
 
   /* ── NAV ── */
@@ -52,8 +71,22 @@
     letter-spacing: 3px;
     color: var(--white);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
   .nav-logo span { color: var(--red); }
+  .nav-logo-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    background: rgba(200, 56, 42, 0.15);
+    border: 1px solid rgba(200, 56, 42, 0.3);
+    color: var(--red);
+    padding: 2px 6px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
 
   .nav-links {
     display: flex;
@@ -79,9 +112,14 @@
     padding: 10px 22px !important;
     border-radius: 2px;
     letter-spacing: 1px !important;
-    transition: background 0.2s !important;
+    font-weight: 700;
+    transition: background 0.2s, transform 0.2s !important;
+    box-shadow: 0 4px 12px var(--glow);
   }
-  .nav-cta:hover { background: var(--red-dark) !important; }
+  .nav-cta:hover { 
+    background: var(--red-dark) !important; 
+    transform: translateY(-1px);
+  }
 
   /* hamburger */
   .hamburger {
@@ -126,8 +164,7 @@
   #hero {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    align-items: center;
     padding: 140px 48px 80px;
     position: relative;
     overflow: hidden;
@@ -136,57 +173,25 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: url('Photos/C19D5079-7360-48C3-8BCC-9FA7C6151567_1_105_c.jpeg') center/cover no-repeat;
-  }
-  .hero-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(160deg, rgba(26,10,8,0.7) 0%, rgba(10,10,10,0.8) 50%, rgba(10,10,10,0.9) 100%);
-  }
-
-  .hero-accent {
-    position: absolute;
-    top: 0; right: 0;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(135deg, transparent 40%, rgba(200,56,42,0.06) 100%);
-  }
-
-  .hero-line {
-    position: absolute;
-    top: 0; bottom: 0;
-    left: 52%;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, var(--red) 30%, var(--red) 70%, transparent);
-    opacity: 0.15;
-  }
-
-  .hero-content { position: relative; z-index: 2; max-width: 680px; }
-  
-  .steph-photo {
-    position: fixed;
-    bottom: -200px;
-    right: 48px;
-    width: 120px;
-    height: 120px;
-    background: url('Photos/steph-photo.jpg') center/cover no-repeat;
-    border-radius: 50%;
-    border: 2px solid var(--red);
-    z-index: 10;
-    opacity: 0;
-    transition: all 0.6s ease;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    background: linear-gradient(to right, rgba(10,10,10,0.9) 30%, rgba(10,10,10,0.5) 70%), url('Photos/C19D5079-7360-48C3-8BCC-9FA7C6151567_1_105_c.jpeg') center/cover no-repeat;
+    z-index: 1;
   }
   
-  .steph-photo.visible {
-    bottom: 48px;
-    opacity: 1;
+  .hero-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 48px;
+    width: 100%;
+    align-items: center;
   }
 
+  .hero-content { max-width: 720px; }
+  
   .hero-eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--red);
@@ -204,81 +209,148 @@
 
   .hero-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(64px, 10vw, 120px);
+    font-size: clamp(54px, 8vw, 100px);
     line-height: 0.95;
-    letter-spacing: 2px;
-    margin-bottom: 28px;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
     color: var(--white);
   }
   .hero-title .accent { color: var(--red); }
+  .hero-title .preorder-stamp {
+    font-size: 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
 
   .hero-sub {
-    font-size: 17px;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 480px;
-    margin-bottom: 44px;
+    font-size: 18px;
+    color: #c4c1bc;
+    line-height: 1.6;
+    margin-bottom: 36px;
     font-weight: 300;
   }
 
-  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
 
   .btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 14px 28px;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 32px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     text-decoration: none;
     border-radius: 2px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid transparent;
   }
   .btn-primary {
     background: var(--red);
     color: var(--white);
     border-color: var(--red);
+    box-shadow: 0 4px 20px var(--glow);
   }
-  .btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
+  .btn-primary:hover { 
+    background: var(--red-dark); 
+    border-color: var(--red-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(200, 56, 42, 0.3);
+  }
   .btn-ghost {
     background: transparent;
     color: var(--white);
     border-color: rgba(245,242,237,0.2);
   }
-  .btn-ghost:hover { border-color: rgba(245,242,237,0.5); }
-
-  .hero-stats {
-    position: absolute;
-    right: 48px;
-    bottom: 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    z-index: 2;
+  .btn-ghost:hover { 
+    border-color: rgba(245,242,237,0.6);
+    background: rgba(255,255,255,0.03);
+    transform: translateY(-2px);
   }
-  .stat { text-align: right; }
+
+  .hero-stats-row {
+    display: flex;
+    gap: 40px;
+  }
+  .stat { text-align: left; }
   .stat-number {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px;
-    letter-spacing: 2px;
+    font-size: 40px;
+    letter-spacing: 1px;
     color: var(--white);
     line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
   }
+  .stat-number span { font-size: 18px; color: var(--gold); }
   .stat-label {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     color: var(--muted);
-    margin-top: 2px;
+    margin-top: 4px;
+  }
+
+  .hero-showcase {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-showcase-frame {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, #161615 0%, #0d0d0c 100%);
+    padding: 16px;
+    position: relative;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+  .hero-showcase-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(200, 56, 42, 0.08) 0%, transparent 60%);
+  }
+
+  .hero-showcase-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.02);
+  }
+
+  .hero-showcase-badge {
+    position: absolute;
+    bottom: 32px;
+    right: -10px;
+    background: var(--gold);
+    color: var(--black);
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 8px 16px;
+    border-radius: 2px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
   }
 
   /* ── SECTION COMMON ── */
-  section { padding: 100px 48px; }
+  section { padding: 120px 48px; position: relative; }
 
   .section-tag {
     font-family: 'DM Mono', monospace;
@@ -298,343 +370,313 @@
   }
   .section-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(40px, 6vw, 68px);
-    letter-spacing: 2px;
-    line-height: 1;
-    margin-bottom: 16px;
+    font-size: clamp(38px, 6vw, 64px);
+    letter-spacing: 1px;
+    line-height: 1.05;
+    margin-bottom: 20px;
   }
   .section-sub {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--muted);
-    max-width: 520px;
+    max-width: 580px;
     line-height: 1.7;
     font-weight: 300;
+    margin-bottom: 48px;
   }
 
-  /* ── ABOUT ── */
-  #about {
+  /* ── BIO SECTION ── */
+  #bio {
+    background: var(--card-bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .bio-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
   }
 
-  .about-visual {
-    position: relative;
-  }
-  .about-frame {
-    width: 100%;
-    aspect-ratio: 3/4;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  .about-frame-inner {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 80px;
-    color: rgba(255,255,255,0.04);
-    letter-spacing: 4px;
-  }
-  .about-badge {
-    position: absolute;
-    bottom: 24px;
-    left: -20px;
-    background: var(--red);
-    color: var(--white);
-    padding: 12px 20px;
-    border-radius: 2px;
-  }
-  .about-badge-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 2px;
-    display: block;
-  }
-  .about-badge-sub {
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    opacity: 0.8;
-  }
-
-  .about-text p {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 16px;
-    font-weight: 300;
-  }
-
-  .about-highlights {
-    margin-top: 40px;
+  .bio-images {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .highlight {
-    border: 1px solid var(--border);
-    padding: 16px;
-    border-radius: 2px;
-  }
-  .highlight-icon {
-    font-size: 18px;
-    margin-bottom: 8px;
-    opacity: 0.6;
-  }
-  .highlight-label {
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 4px;
-  }
-  .highlight-value {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--white);
-  }
-
-  /* ── YOUTUBE ── */
-  #youtube { background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
-  .yt-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 48px;
-    flex-wrap: wrap;
-    gap: 24px;
-  }
-
-  .yt-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1.1fr;
     gap: 16px;
-  }
-
-  .yt-card {
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    overflow: hidden;
-    text-decoration: none;
-    color: var(--white);
-    transition: border-color 0.2s, transform 0.2s;
-    display: block;
-  }
-  .yt-card:hover { border-color: rgba(245,242,237,0.2); transform: translateY(-2px); }
-
-  .yt-thumb {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: #1a1a18;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
-    overflow: hidden;
   }
-  .yt-play {
-    width: 48px; height: 48px;
-    background: rgba(200,56,42,0.9);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .yt-card:hover .yt-play { background: var(--red); transform: scale(1.08); }
-  .yt-play-arrow {
-    width: 0; height: 0;
-    border-style: solid;
-    border-width: 8px 0 8px 14px;
-    border-color: transparent transparent transparent white;
-    margin-left: 3px;
-  }
-  .yt-thumb-label {
-    position: absolute;
-    top: 10px; left: 10px;
-    background: rgba(200,56,42,0.9);
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 1px;
-    font-weight: 600;
-  }
-
-  .yt-card-body { padding: 14px 16px; }
-  .yt-card-title {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--white);
-    margin-bottom: 4px;
-    line-height: 1.4;
-  }
-  .yt-card-meta {
-    font-size: 11px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-  }
-
-  .yt-cta-wrap { margin-top: 40px; text-align: center; }
-
-  /* ── PRODUCTS ── */
-  #products .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 56px;
-  }
-
-  .product-card {
+  
+  .bio-img-wrapper {
+    border-radius: 4px;
     border: 1px solid var(--border);
-    border-radius: 2px;
     overflow: hidden;
-    background: var(--card-bg);
-    transition: border-color 0.2s, transform 0.2s;
+    aspect-ratio: 3/4;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.3);
+    background: #111;
   }
-  .product-card:hover { border-color: rgba(245,242,237,0.15); transform: translateY(-3px); }
-
-  .product-tag-wrap {
-    padding: 20px 24px 0;
+  .bio-img-wrapper.offset {
+    margin-top: 32px;
   }
-  .product-cat {
-    display: inline-block;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-family: 'DM Mono', monospace;
-    color: var(--red);
-    border: 1px solid rgba(200,56,42,0.3);
-    padding: 4px 10px;
-    border-radius: 1px;
-  }
-
-  .product-img {
-    width: calc(100% - 48px);
-    margin: 16px 24px;
-    aspect-ratio: 4/3;
-    background: #1c1b19;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.04);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 50px;
-    letter-spacing: 4px;
-    position: relative;
-    overflow: hidden;
-  }
-  .product-img-gallery {
-    display: flex;
+  .bio-img-wrapper img {
     width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-  }
-  .product-img-gallery img {
     height: 100%;
     object-fit: cover;
-    border: none;
-    scroll-snap-align: center;
-    flex-shrink: 0;
+    transition: transform 0.5s ease;
   }
-  .product-img-gallery img:not(:last-child) {
-    border-right: 1px solid var(--border);
+  .bio-img-wrapper:hover img {
+    transform: scale(1.04);
   }
 
-  .product-body { padding: 0 24px 24px; }
-  .product-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-  }
-  .product-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.65;
-    margin-bottom: 20px;
+  .bio-content p {
+    font-size: 16px;
+    color: #c4c1bc;
+    line-height: 1.8;
+    margin-bottom: 24px;
     font-weight: 300;
   }
-  .product-footer {
+
+  .bio-benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  
+  .benefit-card {
+    border: 1px solid var(--border);
+    padding: 24px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.01);
+    transition: all 0.3s ease;
+  }
+  .benefit-card:hover {
+    border-color: rgba(200, 56, 42, 0.25);
+    background: rgba(200, 56, 42, 0.02);
+    transform: translateY(-2px);
+  }
+  
+  .benefit-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: var(--red);
+    display: block;
+  }
+  
+  .benefit-title {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  
+  .benefit-desc {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* Coach Quote */
+  .coach-quote {
+    margin-top: 48px;
+    border-left: 2px solid var(--red);
+    padding-left: 24px;
+    position: relative;
+  }
+  .quote-text {
+    font-style: italic;
+    color: var(--white);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .quote-author {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
+    gap: 12px;
   }
-  .product-price {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 1px;
+  .quote-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--red);
   }
-  .product-price-sub {
+  .quote-info {
     font-size: 11px;
+    line-height: 1.3;
+  }
+  .quote-name {
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.5px;
+  }
+  .quote-title {
     color: var(--muted);
-    font-family: 'DM Mono', monospace;
   }
 
-  .btn-whatsapp {
-    display: inline-flex;
+  /* ── HOW TO FLOW (TUTORIAL) ── */
+  #tutorial {
+    background: var(--black);
+  }
+
+  .tutorial-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
     align-items: center;
-    gap: 7px;
-    background: var(--whatsapp);
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 2px;
-    font-size: 12px;
-    font-weight: 600;
+  }
+
+  .video-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    background: #111;
+    box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+  }
+  
+  .video-container iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    border: none;
+  }
+
+  .tutorial-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .step-item {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--red);
+    line-height: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(200, 56, 42, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .step-title {
+    font-size: 16px;
+    font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    text-decoration: none;
-    transition: opacity 0.2s;
+    margin-bottom: 6px;
   }
-  .btn-whatsapp:hover { opacity: 0.88; }
+  
+  .step-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
 
-  /* whatsapp svg icon */
-  .wa-icon { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
-
-  /* ── CONTACT ── */
-  #contact {
-    background: var(--card-bg);
+  /* ── SPECIFICATIONS / CTA SECTION ── */
+  #spec-cta {
+    background: linear-gradient(180deg, var(--black) 0%, #0d0c0c 100%);
     border-top: 1px solid var(--border);
     text-align: center;
   }
-  #contact .section-sub { margin: 0 auto 40px; text-align: center; }
+  #spec-cta .section-sub { margin-left: auto; margin-right: auto; }
+  
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto 64px;
+  }
+  
+  .spec-card {
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border-radius: 4px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .spec-card:hover {
+    border-color: rgba(255,255,255,0.12);
+  }
+  
+  .spec-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  
+  .spec-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: var(--white);
+  }
 
-  .contact-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
+  .cta-block {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid rgba(200, 56, 42, 0.2);
+    border-radius: 4px;
+    background: radial-gradient(circle at center, rgba(200, 56, 42, 0.05) 0%, transparent 100%);
+    padding: 48px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+  }
+  
+  .cta-price-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 54px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .cta-price-tag span {
+    font-size: 20px;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    vertical-align: super;
+  }
+  
+  .cta-terms {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-top: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   /* ── FOOTER ── */
   footer {
     border-top: 1px solid var(--border);
-    padding: 32px 48px;
+    padding: 40px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 20px;
+    background: var(--black);
   }
   .footer-logo {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
+    font-size: 22px;
     letter-spacing: 3px;
     color: var(--white);
     text-decoration: none;
@@ -654,23 +696,529 @@
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+
+  /* ── CHECKOUT MODAL ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 8, 8, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+  }
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .modal-card {
+    background: #0f0f0f;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    width: 100%;
+    max-width: 580px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.8);
+    transform: translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .modal-overlay.open .modal-card {
+    transform: translateY(0);
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 10;
+  }
+  .modal-close:hover {
+    color: var(--white);
+  }
+
+  /* Modal Form Content */
+  .modal-body {
+    padding: 40px;
+  }
+  
+  .modal-header {
+    margin-bottom: 32px;
+  }
+  
+  .modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  
+  .modal-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  
+  /* Form styling */
+  .form-group {
+    margin-bottom: 24px;
+  }
+  
+  .form-label {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  
+  .form-input {
+    width: 100%;
+    background: #161615;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 14px 18px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: var(--red);
+    background: #1a1a19;
+  }
+  
+  textarea.form-input {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  /* Invoice styling inside Modal */
+  .invoice-container {
+    display: none;
+  }
+  
+  .invoice-card {
+    background: #161615;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 28px;
+  }
+  
+  .invoice-status-banner {
+    background: rgba(197, 168, 128, 0.15);
+    border: 1px solid rgba(197, 168, 128, 0.3);
+    color: var(--gold);
+    border-radius: 2px;
+    padding: 10px 16px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 24px;
+  }
+  
+  .invoice-header-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+  }
+  
+  .invoice-title-block h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+  .invoice-title-block p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  
+  .invoice-meta-block {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .invoice-meta-block span {
+    color: var(--white);
+    font-weight: 500;
+  }
+  
+  .invoice-ref-box {
+    background: #20201f;
+    border: 1px dashed rgba(255,255,255,0.1);
+    padding: 16px;
+    border-radius: 2px;
+    text-align: center;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .invoice-ref-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+  }
+  .invoice-ref-code {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--red);
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+  }
+  .invoice-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    text-align: left;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .invoice-table td {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .invoice-table td.price-col {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+  }
+  
+  .invoice-total-row {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    text-align: right;
+    margin-top: 16px;
+    color: var(--white);
+  }
+  .invoice-total-row span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    margin-right: 8px;
+    letter-spacing: 0;
+    vertical-align: middle;
+  }
+  
+  .invoice-bank-section {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    margin-top: 24px;
+  }
+  .invoice-bank-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  
+  .invoice-bank-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    font-size: 12px;
+    background: #111110;
+    padding: 16px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+  }
+  .bank-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .bank-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .bank-val {
+    font-weight: 500;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .invoice-notice {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-top: 24px;
+    border-left: 2px solid var(--gold);
+    padding-left: 14px;
+  }
+  
+  .copy-btn {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s;
+  }
+  .copy-btn:hover {
+    color: var(--white);
+  }
+  .copy-btn svg {
+    width: 13px;
+    height: 13px;
+    fill: currentColor;
+  }
+  
+  /* Copy toast badge */
+  .copy-toast {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--gold);
+    color: var(--black);
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  .copy-toast.show {
+    opacity: 1;
+  }
+
+  /* Invoice CTA layout */
+  .invoice-actions {
+    display: flex;
+    gap: 12px;
+  }
+  .invoice-actions .btn {
+    flex: 1;
+    padding: 14px 20px;
+    font-size: 12px;
+  }
+
+  /* ── PERSISTENT ACTIVE PILL ── */
+  .active-preorder-badge {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: linear-gradient(135deg, #161615 0%, #111 100%);
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    padding: 12px 18px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+    z-index: 90;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(120px);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .active-preorder-badge.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .active-preorder-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border-color: var(--white);
+  }
+  .badge-icon {
+    font-size: 16px;
+    color: var(--gold);
+  }
+  .badge-text {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .badge-code {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--red);
+    font-weight: 500;
+  }
+
+  /* ── PRINT INVOICE STYLES (window.print()) ── */
+  @media print {
+    body * {
+      visibility: hidden;
+      background: transparent !important;
+      color: black !important;
+    }
+    
+    #modalOverlay {
+      position: absolute !important;
+      left: 0 !important;
+      top: 0 !important;
+      width: 100% !important;
+      height: auto !important;
+      background: white !important;
+      backdrop-filter: none !important;
+      display: block !important;
+      opacity: 1 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      visibility: visible !important;
+    }
+    
+    #modalOverlay .modal-card {
+      position: absolute !important;
+      left: 0 !important;
+      top: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      max-height: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      background: white !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      overflow: visible !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+    
+    .modal-close, .modal-header, #checkoutForm, .invoice-actions, .copy-btn {
+      display: none !important;
+    }
+    
+    #invoiceView, #invoiceView * {
+      visibility: visible !important;
+    }
+    
+    .invoice-container {
+      display: block !important;
+    }
+    
+    .invoice-card {
+      border: 1px solid #111 !important;
+      background: white !important;
+      color: black !important;
+      padding: 20px !important;
+      margin: 0 !important;
+    }
+    
+    .invoice-card * {
+      color: black !important;
+    }
+    
+    .invoice-status-banner {
+      background: #eee !important;
+      border: 1px solid #aaa !important;
+      color: black !important;
+    }
+    
+    .invoice-ref-box {
+      background: #fafafa !important;
+      border: 1px dashed #777 !important;
+    }
+    
+    .invoice-bank-grid {
+      background: #fafafa !important;
+      border: 1px solid #ddd !important;
+    }
+    
+    .invoice-notice {
+      border-left: 2px solid #555 !important;
+    }
+  }
+
   /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     nav { padding: 18px 24px; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
-    section { padding: 72px 24px; }
-    #hero { padding: 120px 24px 72px; }
-    .hero-stats { position: static; flex-direction: row; gap: 32px; margin-top: 48px; }
-    .stat { text-align: left; }
-    #about { grid-template-columns: 1fr; gap: 48px; }
-    .about-badge { left: 0; }
-    .yt-grid { grid-template-columns: 1fr 1fr; }
-    footer { padding: 24px; }
+    section { padding: 80px 24px; }
+    #hero { padding: 120px 24px 80px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+    .hero-eyebrow { justify-content: center; }
+    .hero-eyebrow::before { display: none; }
+    .hero-actions { justify-content: center; }
+    .hero-stats-row { justify-content: center; }
+    .hero-showcase-frame { max-width: 360px; margin: 0 auto; }
+    
+    .bio-grid { grid-template-columns: 1fr; gap: 48px; }
+    .bio-images { max-width: 500px; margin: 0 auto; }
+    
+    .tutorial-grid { grid-template-columns: 1fr; gap: 48px; }
+    
+    .modal-body { padding: 24px; }
+    .invoice-card { padding: 20px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
   }
   @media (max-width: 580px) {
-    .yt-grid { grid-template-columns: 1fr; }
-    .hero-stats { gap: 24px; }
+    .hero-stats-row { gap: 24px; flex-wrap: wrap; justify-content: space-around; }
+    .bio-benefits { grid-template-columns: 1fr; }
+    .invoice-bank-grid { grid-template-columns: 1fr; }
+    .invoice-actions { flex-direction: column; }
+    .active-preorder-badge {
+      bottom: 16px;
+      right: 16px;
+      left: 16px;
+      justify-content: center;
+    }
   }
 </style>
 </head>
@@ -678,12 +1226,12 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#hero" class="nav-logo">STEPH<span>.</span>DLR</a>
+  <a href="#hero" class="nav-logo">STEPH<span>.</span>DLR <span class="nav-logo-badge">Pre-Order</span></a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#youtube">YouTube</a></li>
-    <li><a href="#products">Shop</a></li>
-    <li><a href="#contact" class="nav-cta">Train With Me</a></li>
+    <li><a href="#bio">Why Flow Rope?</a></li>
+    <li><a href="#tutorial">How To Flow</a></li>
+    <li><a href="#spec-cta">Specs</a></li>
+    <li><a href="javascript:void(0)" onclick="openModal()" class="nav-cta">Pre-Order Now</a></li>
   </ul>
   <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -691,210 +1239,342 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="#youtube" onclick="toggleMenu()">YouTube</a>
-  <a href="#products" onclick="toggleMenu()">Shop</a>
-  <a href="#contact" onclick="toggleMenu()">Train With Me</a>
+  <a href="#bio" onclick="toggleMenu()">Why Flow Rope?</a>
+  <a href="#tutorial" onclick="toggleMenu()">How To Flow</a>
+  <a href="#spec-cta" onclick="toggleMenu()">Specs</a>
+  <a href="javascript:void(0)" onclick="toggleMenu(); openModal();" style="color:var(--red); font-weight:700;">Pre-Order Now</a>
 </div>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-accent"></div>
-  <div class="hero-line"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">MMA Coach &amp; Fighter</p>
-    <h1 class="hero-title">STEPH<br><span class="accent">DLR</span></h1>
-    <p class="hero-sub">Building complete fighters through discipline, technique, and mindset. Train with one of the sharpest coaches in the game.</p>
-    <div class="hero-actions">
-      <a href="#products" class="btn btn-primary">Shop &amp; Train</a>
-      <a href="#youtube" class="btn btn-ghost">Watch Content</a>
-    </div>
-  </div>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-number">10+</div>
-      <div class="stat-label">Years Coaching</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">500+</div>
-      <div class="stat-label">Athletes Trained</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">3</div>
-      <div class="stat-label">Disciplines</div>
-    </div>
-  </div>
-  <div class="steph-photo" id="stephPhoto"></div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-visual reveal">
-    <div class="about-frame">
-      <div class="about-frame-inner">DLR</div>
-    </div>
-    <div class="about-badge">
-      <span class="about-badge-title">Steph DLR</span>
-      <span class="about-badge-sub">Professional MMA Coach</span>
-    </div>
-  </div>
-  <div class="about-text">
-    <p class="section-tag reveal">About</p>
-    <h2 class="section-title reveal">The Coach<br>Behind The<br>Fighter</h2>
-    <p class="reveal">Steph DLR has spent over a decade building fighters from the ground up. With a background spanning striking, wrestling, and submission grappling, Steph brings a well-rounded, no-nonsense approach to coaching that produces results inside and outside the cage.</p>
-    <p class="reveal">Whether you're stepping into a gym for the first time or preparing for competition, the system is built to meet you where you are and take you further than you thought possible.</p>
-    <div class="about-highlights">
-      <div class="highlight reveal"><div class="highlight-label">Striking</div><div class="highlight-value">Muay Thai &amp; Boxing</div></div>
-      <div class="highlight reveal"><div class="highlight-label">Grappling</div><div class="highlight-value">Wrestling &amp; BJJ</div></div>
-      <div class="highlight reveal"><div class="highlight-label">Focus</div><div class="highlight-value">Complete MMA</div></div>
-      <div class="highlight reveal"><div class="highlight-label">Content</div><div class="highlight-value">YouTube Channel</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- YOUTUBE -->
-<section id="youtube">
-  <div class="yt-header">
-    <div>
-      <p class="section-tag reveal">Content</p>
-      <h2 class="section-title reveal">Watch &amp;<br>Learn</h2>
-      <p class="section-sub reveal">Breaking down technique, fight IQ, and training methods — straight from the gym.</p>
-    </div>
-    <a href="https://youtube.com/@stephan_dlr" target="_blank" rel="noopener" class="btn btn-ghost reveal">View Channel ↗</a>
-  </div>
-  <div class="yt-grid">
-    <!-- Card 1 -->
-    <a href="https://youtube.com/@stephan_dlr" target="_blank" rel="noopener" class="yt-card reveal">
-      <div class="yt-thumb">
-        <span class="yt-thumb-label">Technique</span>
-        <div class="yt-play"><div class="yt-play-arrow"></div></div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Professional Fighter Conditioning</p>
+      <h1 class="hero-title">
+        <span class="preorder-stamp">Exclusive Pre-Order Campaign</span>
+        STEPH DLR PRESENTS:<br><span class="accent">THE FLOW ROPE</span>
+      </h1>
+      <p class="hero-sub">Unlock fluid shoulder mobility, fighter-level rhythm, and outstanding cardio conditioning. Designed for high performance, engineered for combat athletes. Est. release in 14 days.</p>
+      <div class="hero-actions">
+        <a href="javascript:void(0)" onclick="openModal()" class="btn btn-primary">Pre-Order Now — R299</a>
+        <a href="#tutorial" class="btn btn-ghost">Watch How To Flow</a>
       </div>
-      <div class="yt-card-body">
-        <p class="yt-card-title">Mastering the Double Leg Takedown</p>
-        <p class="yt-card-meta">Wrestling · 15K views</p>
-      </div>
-    </a>
-    <!-- Card 2 -->
-    <a href="https://youtube.com/@stephan_dlr" target="_blank" rel="noopener" class="yt-card reveal">
-      <div class="yt-thumb">
-        <span class="yt-thumb-label">Fight IQ</span>
-        <div class="yt-play"><div class="yt-play-arrow"></div></div>
-      </div>
-      <div class="yt-card-body">
-        <p class="yt-card-title">Reading Distance in a Fight</p>
-        <p class="yt-card-meta">Striking · 8.2K views</p>
-      </div>
-    </a>
-    <!-- Card 3 -->
-    <a href="https://youtube.com/@stephan_dlr" target="_blank" rel="noopener" class="yt-card reveal">
-      <div class="yt-thumb">
-        <span class="yt-thumb-label">Training</span>
-        <div class="yt-play"><div class="yt-play-arrow"></div></div>
-      </div>
-      <div class="yt-card-body">
-        <p class="yt-card-title">Full Sparring Session Breakdown</p>
-        <p class="yt-card-meta">MMA · 12K views</p>
-      </div>
-    </a>
-    <!-- Card 4 -->
-    <a href="https://youtube.com/@stephan_dlr" target="_blank" rel="noopener" class="yt-card reveal">
-      <div class="yt-thumb">
-        <span class="yt-thumb-label">Short</span>
-        <div class="yt-play"><div class="yt-play-arrow"></div></div>
-      </div>
-      <div class="yt-card-body">
-        <p class="yt-card-title">3 Must-Know Striking Combinations</p>
-        <p class="yt-card-meta">Shorts · 25K views</p>
-      </div>
-    </a>
-    <!-- Card 5 -->
-    <a href="https://youtube.com/@stephan_dlr" target="_blank" rel="noopener" class="yt-card reveal">
-      <div class="yt-thumb">
-        <span class="yt-thumb-label">Defense</span>
-        <div class="yt-play"><div class="yt-play-arrow"></div></div>
-      </div>
-      <div class="yt-card-body">
-        <p class="yt-card-title">Head Movement Fundamentals</p>
-        <p class="yt-card-meta">Boxing · 6.8K views</p>
-      </div>
-    </a>
-    <!-- Card 6 -->
-    <a href="https://youtube.com/@stephan_dlr" target="_blank" rel="noopener" class="yt-card reveal">
-      <div class="yt-thumb">
-        <span class="yt-thumb-label">Conditioning</span>
-        <div class="yt-play"><div class="yt-play-arrow"></div></div>
-      </div>
-      <div class="yt-card-body">
-        <p class="yt-card-title">MMA Fighter Workout Routine</p>
-        <p class="yt-card-meta">Fitness · 9.5K views</p>
-      </div>
-    </a>
-  </div>
-  <div class="yt-cta-wrap reveal">
-    <a href="https://youtube.com/@stephan_dlr" target="_blank" rel="noopener" class="btn btn-primary">Subscribe on YouTube</a>
-  </div>
-</section>
-
-<!-- PRODUCTS -->
-<section id="products">
-  <p class="section-tag reveal">Shop</p>
-  <h2 class="section-title reveal">Flow Ropes</h2>
-  <p class="section-sub reveal">Premium training ropes for conditioning and endurance. Order via WhatsApp — fast, simple, direct.</p>
-
-  <div class="products-grid">
-
-    <!-- Flow Ropes Product -->
-    <div class="product-card reveal">
-      <div class="product-tag-wrap"><span class="product-cat">Training Gear</span></div>
-      <div class="product-img">
-      <div class="product-img-gallery">
-        <img src="Photos/flow-ropes-1.jpg" alt="Flow Ropes - View 1">
-        <img src="Photos/flow-ropes-2.jpg" alt="Flow Ropes - View 2">
-      </div>
-    </div>
-      <div class="product-body">
-        <h3 class="product-name">Flow Ropes</h3>
-        <p class="product-desc">High-quality battle ropes designed for MMA conditioning, endurance training, and full-body workouts. Perfect for fighters of all levels.</p>
-        <div class="product-footer">
-          <div>
-            <div class="product-price">R269.99</div>
-            <div class="product-price-sub">Premium quality</div>
-          </div>
-          <a class="btn-whatsapp" href="https://wa.me/27829264507?text=Hey%20Steph!%20I%20want%20to%20order%20Flow%20Ropes" target="_blank" rel="noopener">
-            <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Order
-          </a>
+      <div class="hero-stats-row">
+        <div class="stat">
+          <div class="stat-number">R299<span>.00</span></div>
+          <div class="stat-label">Excl. Delivery</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">14<span>Days</span></div>
+          <div class="stat-label">Est. Release</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">450<span>g</span></div>
+          <div class="stat-label">High-Momentum</div>
         </div>
       </div>
     </div>
-
     
+    <div class="hero-showcase">
+      <div class="hero-showcase-frame">
+        <img class="hero-showcase-img" src="Photos/flow-ropes-1.jpg" alt="Steph DLR Flow Rope">
+        <div class="hero-showcase-badge">Premium Quality</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <p class="section-tag" style="justify-content:center; margin-bottom:16px;">Contact</p>
-  <h2 class="section-title reveal">Ready to Train?</h2>
-  <p class="section-sub reveal">Reach out directly on WhatsApp or YouTube. No forms, no waiting — just real conversation.</p>
-  <div class="contact-row reveal">
-    <a class="btn-whatsapp" href="https://wa.me/27829264507?text=Hey%20Steph!%20I%20want%20to%20know%20more%20about%20training%20with%20you" target="_blank" rel="noopener" style="padding:14px 28px; font-size:13px; border-radius:2px;">
-      <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Message on WhatsApp
-    </a>
-    <a href="https://youtube.com/@stephan_dlr" target="_blank" rel="noopener" class="btn btn-ghost">YouTube Channel ↗</a>
+<!-- BIO SECTION -->
+<section id="bio">
+  <div class="bio-grid">
+    <div class="bio-images reveal">
+      <div class="bio-img-wrapper">
+        <img src="Photos/flow-ropes-2.jpg" alt="Steph DLR Flow Rope Close-up">
+      </div>
+      <div class="bio-img-wrapper offset">
+        <img src="Photos/steph-photo.jpg" alt="Steph DLR Training">
+      </div>
+    </div>
+    
+    <div class="bio-content">
+      <p class="section-tag reveal">Product Bio</p>
+      <h2 class="section-title reveal">The Ultimate tool<br>For Joint Mobility<br>&amp; Athletic Flow</h2>
+      <p class="reveal">Rope flowing isn't just a trend — it's an essential training method for elite combat athletes. By combining rhythm-based mobility with light resistance, the Steph DLR Flow Rope helps you develop active shoulder health, seamless hand-eye coordination, and fluid fighting footwork.</p>
+      <p class="reveal">Built from heavyweight, high-density double-braided nylon, this rope is specifically weighted at 450g to provide maximum momentum and structural feedback, enabling you to feel the drag and coordinate your body seamlessly.</p>
+      
+      <div class="bio-benefits">
+        <div class="benefit-card reveal">
+          <span class="benefit-icon">🛡️</span>
+          <h3 class="benefit-title">Active Joint Recovery</h3>
+          <p class="benefit-desc">Decompresses and mobilizes shoulders, elbows, and wrists. Excellent for rehab, warmups, and flushing out tightness.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <span class="benefit-icon">⚡</span>
+          <h3 class="benefit-title">Fighter Coordination</h3>
+          <p class="benefit-desc">Teaches the upper body and feet to work in perfect synchronicity, directly improving ring movement, timing, and strike evasion.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <span class="benefit-icon">🫁</span>
+          <h3 class="benefit-title">Low-Impact Cardio</h3>
+          <p class="benefit-desc">Elevates heart rate and improves cardiovascular endurance without the joint-jarring impact of roadwork.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <span class="benefit-icon">🧠</span>
+          <h3 class="benefit-title">Mental Flow State</h3>
+          <p class="benefit-desc">Builds deep focus and spatial awareness through meditative, rhythmic movement. Perfect for calming the nervous system.</p>
+        </div>
+      </div>
+      
+      <div class="coach-quote reveal">
+        <p class="quote-text">"As an MMA coach, I'm always looking for tools that build robust shoulders and natural combat rhythm. The flow rope is my number one recommendation for active recovery and movement efficiency."</p>
+        <div class="quote-author">
+          <img class="quote-avatar" src="Photos/steph-photo.jpg" alt="Steph DLR">
+          <div class="quote-info">
+            <div class="quote-name">Steph DLR</div>
+            <div class="quote-title">Professional MMA Coach &amp; Fighter</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TUTORIAL SECTION -->
+<section id="tutorial">
+  <div class="section-tag reveal" style="justify-content: center; margin-bottom: 16px;">Training Guide</div>
+  <h2 class="section-title reveal" style="text-align: center; margin-bottom: 16px;">How to Rope Flow</h2>
+  <p class="section-sub reveal" style="text-align: center; margin-left: auto; margin-right: auto;">Watch the fundamental mechanics to start your flow rope journey. Simple, fluid, and highly effective.</p>
+  
+  <div class="tutorial-grid">
+    <div class="video-container reveal">
+      <iframe src="https://www.youtube.com/embed/Q43Y2D8t8m8" title="Rope Flow Figure 8 Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    
+    <div class="tutorial-steps">
+      <div class="step-item reveal">
+        <div class="step-num">01</div>
+        <div>
+          <h3 class="step-title">Master the Grip &amp; Stance</h3>
+          <p class="step-desc">Hold the rope tips lightly between your thumb and index fingers. Stand in a comfortable, shoulder-width athletic stance with soft knees. Keep your shoulders relaxed.</p>
+        </div>
+      </div>
+      <div class="step-item reveal">
+        <div class="step-num">02</div>
+        <div>
+          <h3 class="step-title">Underhand Figure-8</h3>
+          <p class="step-desc">Let the rope swing across your body in a figure-8 motion. Use wrist circles to drive the momentum. Feel the weight of the rope drag along the floor on each side.</p>
+        </div>
+      </div>
+      <div class="step-item reveal">
+        <div class="step-num">03</div>
+        <div>
+          <h3 class="step-title">Coordinate Your Step</h3>
+          <p class="step-desc">Once the rhythm is locked in, begin shifting your weight from side to side. Let your heel lift and hips pivot in sync with the rope's swoosh. That is the essence of athletic flow.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIFICATIONS / FINAL CTA -->
+<section id="spec-cta">
+  <p class="section-tag reveal" style="justify-content: center; margin-bottom: 16px;">Product Details</p>
+  <h2 class="section-title reveal">Designed for Combat</h2>
+  <p class="section-sub reveal">Meticulously tested and weighted to deliver the ultimate rope flowing experience.</p>
+  
+  <div class="spec-grid">
+    <div class="spec-card reveal">
+      <div class="spec-label">Material</div>
+      <div class="spec-value">Double Braided Nylon</div>
+    </div>
+    <div class="spec-card reveal">
+      <div class="spec-label">Optimal Weight</div>
+      <div class="spec-value">450g High-Momentum</div>
+    </div>
+    <div class="spec-card reveal">
+      <div class="spec-label">Optimized Length</div>
+      <div class="spec-value">2.9 Meters</div>
+    </div>
+    <div class="spec-card reveal">
+      <div class="spec-label">Colorway</div>
+      <div class="spec-value">Sleek Stealth Black</div>
+    </div>
+  </div>
+  
+  <div class="cta-block reveal">
+    <h3 class="section-title" style="font-size: 36px; margin-bottom: 8px;">Secure Your Pre-Order</h3>
+    <p style="color: var(--muted); margin-bottom: 32px; font-weight: 300;">Reserve yours now and be the first to receive the elite Steph DLR Flow Rope. Estimated release is in 14 days.</p>
+    <div class="cta-price-tag">R299<span>.00</span></div>
+    <button onclick="openModal()" class="btn btn-primary" style="width: 100%; max-width: 320px;">Pre-Order Now</button>
+    <div class="cta-terms">Excluding Delivery · Dynamic EFT Invoice generation</div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <a href="#hero" class="footer-logo">STEPH<span>.</span>DLR</a>
-  <p class="footer-copy">© 2025 Steph DLR · All rights reserved</p>
-  <p class="footer-copy" style="margin-top: 8px; font-size: 11px;">made by ON-SET Productions</p>
+  <p class="footer-copy">© 2026 Steph DLR · All rights reserved</p>
+  <p class="footer-copy">designed by ON-SET Productions</p>
 </footer>
 
+<!-- ── CHECKOUT MODAL ── -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close modal">×</button>
+    
+    <div class="modal-body">
+      
+      <!-- STEP 1: CUSTOMER FORM -->
+      <form id="checkoutForm" onsubmit="handleFormSubmit(event)">
+        <div class="modal-header">
+          <h3 class="modal-title">Pre-Order Details</h3>
+          <p class="modal-subtitle">Provide your delivery details below to generate your secure pre-order invoice.</p>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="custName">Full Name</label>
+          <input class="form-input" type="text" id="custName" placeholder="e.g. John Doe" required>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="custEmail">Email Address</label>
+            <input class="form-input" type="email" id="custEmail" placeholder="e.g. john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="custPhone">Phone Number</label>
+            <input class="form-input" type="tel" id="custPhone" placeholder="e.g. 082 123 4567" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="custAddress">Delivery Address</label>
+          <textarea class="form-input" id="custAddress" placeholder="e.g. 123 Fighter Street, Sandton, Johannesburg, 2196" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Generate Pre-Order Invoice</button>
+        <p style="font-size: 11px; color: var(--muted); text-align: center; margin-top: 14px; font-family: 'DM Mono', monospace;">
+          *Standard bank EFT transfer. Banking details &amp; unique payment reference provided on the next step.
+        </p>
+      </form>
+      
+      <!-- STEP 2: INVOICE GENERATOR VIEW -->
+      <div class="invoice-container" id="invoiceView">
+        <div class="modal-header" style="margin-bottom: 24px;">
+          <h3 class="modal-title">Your Pre-Order Invoice</h3>
+          <p class="modal-subtitle">Your pre-order has been reserved. Please transfer the funds using the reference code below to finalize.</p>
+        </div>
+        
+        <div class="invoice-card">
+          <div class="invoice-status-banner">Pre-Order Reserved (Pending EFT Payment)</div>
+          
+          <div class="invoice-header-row">
+            <div class="invoice-title-block">
+              <h4>DLR FLOW GEAR</h4>
+              <p>STEPH-DLR-WEBSITE</p>
+            </div>
+            <div class="invoice-meta-block">
+              <div>Invoice Date: <span id="invDate">2026-05-26</span></div>
+              <div>Est. Release: <span id="invReleaseDate">June 9, 2026</span></div>
+              <div>Status: <span style="color:var(--gold); font-weight:700;">PENDING PAYMENT</span></div>
+            </div>
+          </div>
+          
+          <!-- Reference Code Field with copy feature -->
+          <div class="invoice-ref-box">
+            <div class="invoice-ref-label">Your Unique Payment Reference</div>
+            <div class="invoice-ref-code">
+              <span id="invoiceRefCode">DLR-FR-4812K</span>
+              <button class="copy-btn" onclick="copyText('invoiceRefCode')" title="Copy Reference Code">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              </button>
+            </div>
+            <div class="copy-toast" id="refCopyToast">Reference Copied</div>
+          </div>
+          
+          <table class="invoice-table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th style="text-align: right;">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Steph DLR Premium Flow Rope (Pre-Order)</strong><br>
+                  <span style="font-size: 11px; color: var(--muted);">Qty: 1 · Weight: 450g · Material: Double Braided Nylon</span>
+                </td>
+                <td class="price-col">R299.00</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Delivery / Shipping</strong><br>
+                  <span style="font-size: 11px; color: var(--muted);">Billed and calculated separately post-release</span>
+                </td>
+                <td class="price-col" style="color: var(--muted); font-size: 11px; font-family: 'DM Mono', monospace;">TBD</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div class="invoice-total-row">
+            <span>Total Payable:</span>R299.00
+          </div>
+          
+          <!-- Banking Details with copy feature -->
+          <div class="invoice-bank-section">
+            <div class="invoice-bank-title">EFT Banking Details</div>
+            <div class="invoice-bank-grid">
+              <div class="bank-item">
+                <span class="bank-label">Bank</span>
+                <span class="bank-val">First National Bank (FNB)</span>
+              </div>
+              <div class="bank-item">
+                <span class="bank-label">Account Holder</span>
+                <span class="bank-val">Steph DLR</span>
+              </div>
+              <div class="bank-item" style="position: relative;">
+                <span class="bank-label">Account Number</span>
+                <span class="bank-val">
+                  <span id="bankAccountNum">62901234567</span>
+                  <button class="copy-btn" onclick="copyText('bankAccountNum', 'accountCopyToast')" title="Copy Account Number">
+                    <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                  </button>
+                </span>
+                <div class="copy-toast" id="accountCopyToast" style="font-size:9px; padding: 4px 10px;">Copied</div>
+              </div>
+              <div class="bank-item">
+                <span class="bank-label">Branch Code</span>
+                <span class="bank-val">250655</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="invoice-notice">
+            <strong>Important Notice:</strong> Your pre-order is securely held for 48 hours pending payment verification. Please use your unique reference code in the bank payment fields. Send your proof of payment to Steph DLR directly via WhatsApp.
+          </div>
+        </div>
+        
+        <div class="invoice-actions">
+          <button class="btn btn-primary" onclick="window.print()">Download Invoice (PDF / Print)</button>
+          <button class="btn btn-ghost" onclick="downloadTxtInvoice()">Save Text Invoice</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVE PREORDER FLOATING PILL -->
+<div class="active-preorder-badge" id="activePreorderBadge" onclick="showActiveInvoice()">
+  <span class="badge-icon">📋</span>
+  <span class="badge-text">Active Pre-Order:</span>
+  <span class="badge-code" id="activeBadgeCode">DLR-FR-XXXXX</span>
+</div>
+
 <script>
+// Mobile navigation menu toggle
 function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
@@ -908,7 +1588,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Scroll reveal
+// Scroll reveal observer
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -919,21 +1599,219 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Steph photo scroll reveal
-const stephPhoto = document.getElementById('stephPhoto');
-let hasShownPhoto = false;
+// Modal management
+const modalOverlay = document.getElementById('modalOverlay');
+const checkoutForm = document.getElementById('checkoutForm');
+const invoiceView = document.getElementById('invoiceView');
+const activePreorderBadge = document.getElementById('activePreorderBadge');
+const activeBadgeCode = document.getElementById('activeBadgeCode');
 
-window.addEventListener('scroll', () => {
-  const scrollPosition = window.scrollY;
+let activePreorder = null;
+
+// Initialize layout dates and load persistent order from localStorage
+window.addEventListener('DOMContentLoaded', () => {
+  calculateDynamicDates();
+  loadSavedPreorder();
+});
+
+// Calculate current date and dynamic +14 days release date
+function calculateDynamicDates() {
+  const today = new Date();
   
-  if (scrollPosition > 200 && !hasShownPhoto) {
-    stephPhoto.classList.add('visible');
-    hasShownPhoto = true;
-  } else if (scrollPosition <= 200 && hasShownPhoto) {
-    stephPhoto.classList.remove('visible');
-    hasShownPhoto = false;
+  // Format Invoice Date
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  document.getElementById('invDate').textContent = `${yyyy}-${mm}-${dd}`;
+  
+  // Format Release Date (+14 days)
+  const releaseDate = new Date(today);
+  releaseDate.setDate(today.getDate() + 14);
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  document.getElementById('invReleaseDate').textContent = releaseDate.toLocaleDateString('en-US', options);
+}
+
+function openModal() {
+  modalOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  
+  // If there's an active pre-order, show the invoice directly, else show form
+  if (activePreorder) {
+    showInvoice(activePreorder);
+  } else {
+    checkoutForm.style.display = 'block';
+    invoiceView.style.display = 'none';
+  }
+}
+
+function closeModal() {
+  modalOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close modal when clicking on overlay background
+modalOverlay.addEventListener('click', (e) => {
+  if (e.target === modalOverlay) {
+    closeModal();
   }
 });
+
+// Generate dynamic unique reference code
+function generateReferenceCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ'; // exclude easily confused letters like I, O
+  const digits = '123456789';
+  
+  let randomDigits = '';
+  for (let i = 0; i < 4; i++) {
+    randomDigits += digits.charAt(Math.floor(Math.random() * digits.length));
+  }
+  
+  let randomLetters = '';
+  for (let i = 0; i < 2; i++) {
+    randomLetters += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  
+  return `DLR-FR-${randomDigits}${randomLetters}`;
+}
+
+// Handle Form Submission
+function handleFormSubmit(event) {
+  event.preventDefault();
+  
+  const name = document.getElementById('custName').value;
+  const email = document.getElementById('custEmail').value;
+  const phone = document.getElementById('custPhone').value;
+  const address = document.getElementById('custAddress').value;
+  
+  const refCode = generateReferenceCode();
+  const today = new Date();
+  const dateStr = today.toISOString().split('T')[0];
+  
+  const releaseDate = new Date(today);
+  releaseDate.setDate(today.getDate() + 14);
+  const releaseStr = releaseDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  
+  // Save order details to active variable
+  activePreorder = {
+    name,
+    email,
+    phone,
+    address,
+    refCode,
+    date: dateStr,
+    releaseDate: releaseStr
+  };
+  
+  // Persist order in localStorage
+  localStorage.setItem('dlr_rope_preorder', JSON.stringify(activePreorder));
+  
+  // Update UI and display invoice
+  showInvoice(activePreorder);
+}
+
+// Display Invoice View
+function showInvoice(preorder) {
+  checkoutForm.style.display = 'none';
+  invoiceView.style.display = 'block';
+  
+  document.getElementById('invoiceRefCode').textContent = preorder.refCode;
+  document.getElementById('invDate').textContent = preorder.date;
+  document.getElementById('invReleaseDate').textContent = preorder.releaseDate;
+  
+  // Render persistent pill in bottom corner
+  activeBadgeCode.textContent = preorder.refCode;
+  activePreorderBadge.classList.add('visible');
+}
+
+// Load Pre-Order from localStorage
+function loadSavedPreorder() {
+  const savedData = localStorage.getItem('dlr_rope_preorder');
+  if (savedData) {
+    try {
+      activePreorder = JSON.parse(savedData);
+      activeBadgeCode.textContent = activePreorder.refCode;
+      activePreorderBadge.classList.add('visible');
+    } catch(e) {
+      console.error("Error loading saved pre-order data:", e);
+      localStorage.removeItem('dlr_rope_preorder');
+    }
+  }
+}
+
+// Restore pre-order modal from floating badge
+function showActiveInvoice() {
+  if (activePreorder) {
+    openModal();
+  }
+}
+
+// Copy to Clipboard
+function copyText(elementId, toastId = 'refCopyToast') {
+  const text = document.getElementById(elementId).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById(toastId);
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2000);
+  }).catch(err => {
+    console.error('Failed to copy text: ', err);
+  });
+}
+
+// Text Invoice Generation & Download
+function downloadTxtInvoice() {
+  if (!activePreorder) return;
+  
+  const textInvoice = `=========================================
+STEPH DLR — PREMIUM FLOW ROPE PRE-ORDER INVOICE
+=========================================
+Invoice Date:    ${activePreorder.date}
+Reference Code:  ${activePreorder.refCode}
+Status:          PENDING EFT PAYMENT
+Est. Release:    ${activePreorder.releaseDate}
+
+CUSTOMER DETAILS:
+-----------------------------------------
+Name:    ${activePreorder.name}
+Email:   ${activePreorder.email}
+Phone:   ${activePreorder.phone}
+Address: ${activePreorder.address}
+
+ORDER BREAKDOWN:
+-----------------------------------------
+1x Steph DLR Premium Flow Rope: R299.00
+Delivery / Shipping:            Excluding Delivery (Calculated separately)
+-----------------------------------------
+TOTAL PAYABLE:                  R299.00
+
+EFT BANKING DETAILS:
+-----------------------------------------
+Bank:           First National Bank (FNB)
+Account Name:   Steph DLR
+Account Number: 62901234567
+Branch Code:    250655
+Reference:      ${activePreorder.refCode}
+
+PAYMENT INSTRUCTIONS:
+-----------------------------------------
+Please execute an EFT transfer of R299.00 to the bank details above.
+You MUST specify the Reference Code [ ${activePreorder.refCode} ] in the bank reference field.
+Your pre-order is reserved for 48 hours. Send proof of payment to Steph DLR.
+Your Flow Rope will be shipped immediately upon release in est. 14 days.
+=========================================`;
+
+  const blob = new Blob([textInvoice], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `Invoice_${activePreorder.refCode}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
 </script>
+
 </body>
 </html>
