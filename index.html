@@ -1415,9 +1415,9 @@
           
           <!-- Reference Code Field with copy feature -->
           <div class="invoice-ref-box">
-            <div class="invoice-ref-label">Your Unique Payment Reference</div>
+            <div class="invoice-ref-label">Your EFT Payment Reference</div>
             <div class="invoice-ref-code">
-              <span id="invoiceRefCode">DLR-FR-4812K</span>
+              <span id="invoiceRefCode">Your Name - Flow Rope</span>
               <button class="copy-btn" onclick="copyText('invoiceRefCode')" title="Copy Reference Code">
                 <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
               </button>
@@ -1484,7 +1484,7 @@
           </div>
           
           <div class="invoice-notice">
-            <strong>Important Notice:</strong> Your pre-order is securely held for 48 hours pending payment verification. Please use your unique reference code in the bank payment fields. Send your proof of payment to Steph DLR directly via WhatsApp.
+            <strong>Important Notice:</strong> Your pre-order is securely held for 48 hours pending payment verification. Please use the exact reference code above (your Name &amp; Surname - Flow Rope) in your bank payment reference field when transferring. Send your proof of payment to Steph DLR directly.
           </div>
         </div>
         
@@ -1502,7 +1502,7 @@
 <div class="active-preorder-badge" id="activePreorderBadge" onclick="showActiveInvoice()">
   <span class="badge-icon">📋</span>
   <span class="badge-text">Active Pre-Order:</span>
-  <span class="badge-code" id="activeBadgeCode">DLR-FR-XXXXX</span>
+  <span class="badge-code" id="activeBadgeCode">Your Name - Flow Rope</span>
 </div>
 
 <script>
@@ -1588,24 +1588,6 @@ modalOverlay.addEventListener('click', (e) => {
   }
 });
 
-// Generate dynamic unique reference code
-function generateReferenceCode() {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ'; // exclude easily confused letters like I, O
-  const digits = '123456789';
-  
-  let randomDigits = '';
-  for (let i = 0; i < 4; i++) {
-    randomDigits += digits.charAt(Math.floor(Math.random() * digits.length));
-  }
-  
-  let randomLetters = '';
-  for (let i = 0; i < 2; i++) {
-    randomLetters += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  
-  return `DLR-FR-${randomDigits}${randomLetters}`;
-}
-
 // Handle Form Submission
 function handleFormSubmit(event) {
   event.preventDefault();
@@ -1615,7 +1597,7 @@ function handleFormSubmit(event) {
   const phone = document.getElementById('custPhone').value;
   const address = document.getElementById('custAddress').value;
   
-  const refCode = generateReferenceCode();
+  const refCode = `${name} - Flow Rope`;
   const today = new Date();
   const dateStr = today.toISOString().split('T')[0];
   
